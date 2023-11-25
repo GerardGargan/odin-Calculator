@@ -26,18 +26,28 @@ document.addEventListener("DOMContentLoaded", function(){
         });
     });
 
+
+    clear.addEventListener("click", () => {
+        operatorValue = "";
+        curValue = "";
+        prevValue = "";
+        prevScreen.textContent = "";
+        curScreen.textContent = "";
+    });
+
+    function handleNumber(num){
+        if(curValue.length <= 5){
+            curValue += num;
+        }
+        
+    }
+
+    function handleOperator(op){
+        operatorValue = op;
+        prevValue = curValue;
+        curValue = "";
+        
+    }
+
 });
 
-function handleNumber(num){
-    if(curValue.length <= 5){
-        curValue += num;
-    }
-    
-}
-
-function handleOperator(op){
-    operatorValue = op;
-    prevValue = curValue;
-    curValue = "";
-    
-}
