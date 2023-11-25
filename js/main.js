@@ -1,4 +1,4 @@
-let operator = '';
+let operatorValue = '';
 let prevValue = '';
 let curValue = '';
 
@@ -18,8 +18,26 @@ document.addEventListener("DOMContentLoaded", function(){
         curScreen.textContent = curValue;
     }));
 
+    operators.forEach((operator) => {
+        operator.addEventListener("click", function(e) {
+            handleOperator(e.target.textContent);
+            prevScreen.textContent = prevValue + " " + operatorValue;
+            curScreen.textContent = curValue;
+        });
+    });
+
 });
 
 function handleNumber(num){
-    curValue += num;
+    if(curValue.length <= 5){
+        curValue += num;
+    }
+    
+}
+
+function handleOperator(op){
+    operatorValue = op;
+    prevValue = curValue;
+    curValue = "";
+    
 }
