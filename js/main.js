@@ -36,25 +36,10 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
     equal.addEventListener("click", function (){
-        let result = 0;
-        switch(operatorValue){
-            case "+":
-                result = parseInt(curValue) + parseInt(prevValue);
-            break;
-            case "-":
-                result = parseInt(prevValue) - parseInt(curValue)
-            break;
-            case "x":
-                result = parseInt(prevValue) * parseInt(curValue);
-            break;
-            case "/":
-                result = parseInt(prevValue) / parseInt(curValue);
-            break;
-            default: result = parseInt(0);
-        }
-        curScreen.textContent = result;
+        calculate();
+        curScreen.textContent = prevValue;
         prevScreen.textContent = "";
-        curValue = result;
+        curValue = prevValue;
     });
 
     function handleNumber(num){
@@ -71,6 +56,28 @@ document.addEventListener("DOMContentLoaded", function(){
         
     }
 
+    function calculate(){
+        prevValue = Number(prevValue);
+        curValue = Number(curValue);
+        
+        switch(operatorValue){
+            case "+":
+             prevValue = parseInt(curValue) + parseInt(prevValue);
+            break;
+            case "-":
+             prevValue = parseInt(prevValue) - parseInt(curValue)
+            break;
+            case "x":
+             prevValue = parseInt(prevValue) * parseInt(curValue);
+            break;
+            case "/":
+             prevValue = parseInt(prevValue) / parseInt(curValue);
+            break;
+            default: prevValue = parseInt(0);
+        }
 
+    }
+
+    
 });
 
